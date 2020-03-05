@@ -1,0 +1,29 @@
+---
+micronaut:
+  application:
+    name: mn-gorm-liquibase
+
+---
+hibernate:
+  hbm2ddl:
+    auto: none
+  cache:
+    queries: false
+    use_second_level_cache: false
+    use_query_cache: false
+    # region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+dataSource:
+    pooled: true
+    jmxExport: true
+    dbCreate: none
+    url: 'jdbc:h2:mem:GORMDb'
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+liquibase:
+  datasources:
+    default:
+      enabled: true
+      change-log: 'classpath:db/changelog.xml'
+rabbitmq:
+  enabled: false
